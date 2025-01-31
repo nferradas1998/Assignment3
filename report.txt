@@ -1,0 +1,101 @@
+Theoretical Analysis Quicksort:
+
+Time Complexity
+
+There is an important difference between Randomized and Deterministic quicksort that has an impact in the time complexity, 
+the pivot placement. In the case of deterministic quicksort the pivot is always selected by a fixed parameter, meaning that
+it will always be in a given postition in the array (Ex. last position). In the case of Randomized Quicksort, the pivot is
+chosen at random, which means that you are least likely to fall into a worst case scenario where the time complexity deteriorates.
+
+Because of this, Deterministic Quicksort has a worst-case scenario for time complexity of O(n^2), but Randomized Quicksort has
+an expected time complexity of O(n log n) in which falling into a "worst-case scenario" is extremely unlikely.
+
+This however does not mean that Deterministic Quicksort is just a worst algorithm, or that there is no use for it. When there
+is a good pivot placement strategy, it can have just as good a performance.
+
+
+Empirical Comparisons
+
+We will be comparing the results for different experiments to analyze the difference between performance of both algorithms.
+
+1. Randomly Generated Array
+
+    For Randomly generated arrays I was able to observe that deterministic quicksort was performing slightly better than Randomized
+    Quicksort. This makes sense theoretically since we are not having a sorted array. Below are the results:
+
+        Input Size: 500
+            Randomized Quicksort Duration: 0.002 seconds
+            Deterministic Quicsort Duration: 0.003 seconds
+        
+        Input Size: 1000
+            Randomized Quicksort Duration: 0.003 seconds
+            Deterministic Quicksort Duratoin: 0.003 second
+        
+        Input Size: 5000
+            Randomized Quicksort Duration: 0.015 seconds
+            Deterministic Quicksort Duration: 0.012 seconds
+        
+        Input Size: 10000
+            Randomized Quicksort Duration: 0.035 seconds
+            Deterministic Quicksort Duration: 0.022 seconds
+
+2. Sorted Array
+
+    For sorted arrays, the difference in performance was very significant in favor of Randomized Quicksort. This is because
+    Deterministic Quicksort was facing a worst-case scenario, and so as the input size grew, the performance got exponentially
+    worse.
+
+        Input Size: 500
+            Randomized Quicksort Duration: 0.002 seconds
+            Deterministic Quicsort Duration: 0.003 seconds
+        
+        Input Size: 1000
+            Randomized Quicksort Duration: 0.003 seconds
+            Deterministic Quicksort Duratoin: 0.010 second
+        
+        Input Size: 5000
+            Randomized Quicksort Duration: 0.015 seconds
+            Deterministic Quicksort Duration: 1.7 seconds
+        
+        Input Size: 10000
+            Randomized Quicksort Duration: 0.035 seconds
+            Deterministic Quicksort Duration: 6.9 seconds
+
+3. Reverse-Sorted Array
+
+    something very similar was observed for reverse-sorted arrays, since its also a worst-case scenario for Deterministic Quicksort. 
+    Here are the results:
+
+        Input Size: 500
+            Randomized Quicksort Duration: 0.002 seconds
+            Deterministic Quicsort Duration: 0.003 seconds
+        
+        Input Size: 1000
+            Randomized Quicksort Duration: 0.003 seconds
+            Deterministic Quicksort Duratoin: 0.05 second
+        
+        Input Size: 5000
+            Randomized Quicksort Duration: 0.015 seconds
+            Deterministic Quicksort Duration: 0.5 seconds
+        
+        Input Size: 10000
+            Randomized Quicksort Duration: 0.035 seconds
+            Deterministic Quicksort Duration: 2.0 seconds
+
+4. Repeated elements in the Array
+
+    There was no difference at all between performance between both types of Quicksort for arrays that contained repeated elements.
+    The reasn for this is that the content of the array does not matter, but rather the order of the values is what can bring a "worse-case"
+    scenario.
+
+Theoretical Analyzis HashTable
+
+Time complexity:
+
+For all methods in a regular hash table the Time complexity is O(1). This being said, that is for a hashtable that is not chained and
+that only contains one entry for each index. The time complexity slightly changes when you have a chained hash table. The reason being that for each index
+there is now a possibility of multiple entries, which again means that there is an additional complexity to search for the desired value.
+
+Because we are using a linked list for this implementation, the time complexity to search in the linked list will be linear so O(n).
+This means that the time complexity for each operation (insert, search, delete) will be of O(1+n) n being the number of elements in the index
+where the value is stored.
